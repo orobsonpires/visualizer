@@ -26,9 +26,9 @@ function findPeaks(pcmdata, samplerate) {
     var prevmax = 0;
     var prevdiffthreshold = 0.3;
 
-    var samplesound = setInterval(function () {
+    endBlink();
 
-        endBlink();
+    var samplesound = setInterval(function () {
 
         if (index >= pcmdata.length) {
             clearInterval(samplesound);
