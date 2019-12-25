@@ -3,7 +3,7 @@ const Through = require('audio-through');
 const Gpio = require('onoff').Gpio;
 
 var LED = new Gpio(4, 'out');
-var blinkInterval = setInterval(blinkLED, 250);
+//var blinkInterval = setInterval(blinkLED, 250);
 
 var s = micStream();
 
