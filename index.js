@@ -2,11 +2,12 @@ const micStream = require('mic-stream');
 const Through = require('audio-through');
 const Gpio = require('onoff').Gpio;
 
+// LEDs
 var led1 = new Gpio(4, 'out');
 var led2 = new Gpio(14, 'out');
 var led3 = new Gpio(15, 'out');
-//var blinkInterval = setInterval(blinkLED, 250);
 
+// listen to microphone
 var s = micStream();
 
 s.pipe(Through());
@@ -26,6 +27,9 @@ function findPeaks(pcmdata, samplerate) {
     var prevdiffthreshold = 0.3;
 
     var samplesound = setInterval(function () {
+
+        endBlink();
+
         if (index >= pcmdata.length) {
             clearInterval(samplesound);
             console.log("finished sampling sound")
@@ -40,6 +44,7 @@ function findPeaks(pcmdata, samplerate) {
         if (max - prevmax >= prevdiffthreshold) {
             bars = bars + " == peak == "
         }
+
         console.log(bars, max)
 
         if (max >= 0.1) {
@@ -75,9 +80,9 @@ function blinkLED(led) { //function to start blinking
 }
 
 function endBlink() { //function to stop blinking
-    //clearInterval(blinkInterval); // Stop blink intervals
-    //led.writeSync(0); // Turn LED off
-    //LED.unexport(); // Unexport GPIO to free resources
+    led1.writeSync(0);
+    led2.writeSync(0);
+    led3.writeSync(0);
 }
 
 //setTimeout(endBlink, 5000);
