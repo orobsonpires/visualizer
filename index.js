@@ -4,6 +4,7 @@ const Gpio = require('onoff').Gpio;
 
 var led1 = new Gpio(4, 'out');
 var led2 = new Gpio(14, 'out');
+var led3 = new Gpio(15, 'out');
 //var blinkInterval = setInterval(blinkLED, 250);
 
 var s = micStream();
@@ -47,6 +48,10 @@ function findPeaks(pcmdata, samplerate) {
 
         if (max >= 0.2) {
             blinkLED(led2);
+        }
+
+        if (max >= 0.3) {
+            blinkLED(led3);
         }
 
         prevmax = max; max = 0; index += step;
