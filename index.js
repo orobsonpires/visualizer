@@ -39,6 +39,9 @@ function findPeaks(pcmdata, samplerate) {
             bars = bars + " == peak == "
         }
         console.log(bars, max)
+        if (max > 0.2) {
+            blinkLED();
+        }
         prevmax = max; max = 0; index += step;
     }, interval, pcmdata);
 }
@@ -65,4 +68,4 @@ function endBlink() { //function to stop blinking
     LED.unexport(); // Unexport GPIO to free resources
 }
 
-setTimeout(endBlink, 5000);
+//setTimeout(endBlink, 5000);
