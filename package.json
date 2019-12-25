@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "mic-stream": "^1.0.2"
+    "mic-stream": "^1.0.2",
+    "onoff": "^5.0.1"
   },
   "devDependencies": {},
   "scripts": {
